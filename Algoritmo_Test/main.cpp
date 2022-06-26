@@ -7,8 +7,23 @@
 int main()
 {
     using namespace cinolib;
-    DrawableTrimesh<> m("mesh/triangolo.obj");
+    //Carico la Mesh
+    DrawableTrimesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/triangolo.obj");
     GLcanvas gui;
+    //La inserisco nell'interfaccia
     gui.push(&m);
+    //Applico l'algoritmo di ambient occlusion
+    ambient_occlusion_psh(m);
+    //Aggiorno la mesh
+    m.updateGL();
+
+    gui.callback_app_controls = [&]()
+    {
+        if(ImGui::SliderFloat("AOPSH", &m.AO_alpha, 0.f, 1.f))
+        {
+            m.updateGL();
+        }
+    };
+
     return gui.launch();
 }
