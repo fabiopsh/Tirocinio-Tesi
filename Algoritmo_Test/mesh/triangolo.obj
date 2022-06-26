@@ -1,0 +1,17 @@
+# This file uses centimeters as units for non-parametric coordinates.
+
+mtllib triangolo.mtl
+g default
+v -6.276060 0.000000 0.500000
+v -4.544009 0.000000 0.500000
+v -5.410035 0.000000 -1.000000
+vt 0.000000 0.000000
+vt 1.000000 0.000000
+vt 0.500000 0.866025
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+s off
+g pDisc1
+usemtl initialShadingGroup
+f 1/1/1 2/2/2 3/3/3
