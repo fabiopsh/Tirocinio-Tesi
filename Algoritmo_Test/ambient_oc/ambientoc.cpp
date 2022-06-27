@@ -58,9 +58,11 @@ void ambient_occlusion_psh(      Mesh & m,
     glViewport(0,0,buffer_size,buffer_size);
 
     /**
-     * Qui trasformo la sfera di punti che ho trovato in una semisfera, ho bisogno quindi di una funzione
-     * che prenda la sfera e la trasformi in una semisfera, poi dato un tale valore di rotazione del piano
-     * permetta di far ruotare questi punti per poterli far coincidere con la normale di ogni triangolo
+     * Qui trasformo la sfera di punti che ho trovato in una semisfera filtrando tutti
+     * i punti che si trovano sotto il piano coincidente con il triangolo preso in 
+     * considerazione, ho bisogno quindi di una funzione che faccia da filtro
+     * che prenda la sfera e un piano e restituisca in una semisfera di punti che 
+     * poi di fatto è un vettore di direzioni che mi serviranno per ogni triangolo
      */
 
 
