@@ -57,36 +57,44 @@ void ambient_occlusion_psh(      Mesh & m,
     glLoadIdentity();
     glViewport(0,0,buffer_size,buffer_size);
 
-/**
- * Qui trasformo la sfera di punti che ho trovato in una semisfera, ho bisogno quindi di una funzione
- * che prenda la sfera e la trasformi in una semisfera, poi dato un tale valore di rotazione del piano
- * permetta di far ruotare questi punti per poterli far coincidere con la normale di ogni triangolo
- */
+    /**
+     * Qui trasformo la sfera di punti che ho trovato in una semisfera, ho bisogno quindi di una funzione
+     * che prenda la sfera e la trasformi in una semisfera, poi dato un tale valore di rotazione del piano
+     * permetta di far ruotare questi punti per poterli far coincidere con la normale di ogni triangolo
+     */
 
 
 
 
-/**
- * Qui per ogni triangolo della mesh faccio scorrere e mando un raggio dal centro del triangolo
- * verso tutti i punti della semisfera che ho.
- */
+    /**
+     * Qui per ogni triangolo della mesh faccio scorrere e mando un raggio dal centro del triangolo
+     * verso tutti i punti della semisfera che ho.
+     */
 
 
 
-/**
- * Qui per ogni raggio sparato controllo le collisioni con i triangoli, in base al fatto che trovo 
- * una collisione o no salvo in un buffer il punteggio di occlusione ambientale che devo applicare al triangolo.
- * 
- * Sommo tutti i valori ottenuti da tutti i raggi ottenendo così il punteggio finale.
- */
+    /**
+     * Qui per ogni raggio sparato controllo le collisioni con i triangoli, in base al fatto che trovo 
+     * una collisione o no salvo in un buffer il punteggio di occlusione ambientale che devo applicare al triangolo.
+     * 
+     * Sommo tutti i valori ottenuti da tutti i raggi ottenendo così il punteggio finale.
+     */
 
 
 
 
-/**
- * Qui dopo aver ottenuto il punteggio di ogni triangolo della mesh applico tramite le adeguate funzioni di openGL 
- * l'oc ad ogni triangolo.
- */
+    /**
+     * Qui dopo aver ottenuto il punteggio di ogni triangolo della mesh applico tramite le adeguate funzioni di openGL 
+     * l'oc ad ogni triangolo.
+     */
+    auto min_max = std::minmax_element(ao.begin(), ao.end());   //Coppia di range di AO
+    auto min     = *min_max.first;
+    auto max     = *min_max.second;
+    //Scorro tutti gli ID del poligono
+    for(uint pid=0; pid<m.num_polys(); ++pid)
+    {
+        m.poly_data(pid).AO = (m.poly_data(pid).flags[HIDDEN]) ? 1.0 : (ao[pid]-min)/max; //Applico l'AO al poligono
+    }
 
 
 }
