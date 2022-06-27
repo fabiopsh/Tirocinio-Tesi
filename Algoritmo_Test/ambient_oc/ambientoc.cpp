@@ -32,20 +32,24 @@ void ambient_occlusion_psh(      Mesh & m,
                                   const int    buffer_size,
                                   const uint   sample_dirs)
 {
-    //Inizializzo le variabili necessarie per l'algoritmo
+    /**
+     * Inizializzo tutte le variabili utili per l'algoritmo
+     * (ne mancano alcune)
+     */
     std::vector<float> ao(m.num_polys(),0);
     std::vector<vec3d> dirs;
     sphere_coverage(sample_dirs, dirs);
 
-    //Controllo che sia possibile istanziare un ambiente OPENGL
+    /**Controllo che sia possibile istanziare un ambiente OPENGL
+     * Se non è possibile mando un messaggio di errore, se è possibile
+     * inizializzo tutte le varie funzioni di OpenGL
+     */
     GLFWwindow* GL_context = create_offline_GL_context(buffer_size, buffer_size);
     if(GL_context==NULL)
     {
         std::cerr << "Impossible to create a GL context. Make sure GLFW has been initialized" << std::endl;
         return;
     }
-
-    //Inizializzo varie funzioni GL
     glfwMakeContextCurrent(GL_context);
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
@@ -53,11 +57,37 @@ void ambient_occlusion_psh(      Mesh & m,
     glLoadIdentity();
     glViewport(0,0,buffer_size,buffer_size);
 
-    //Per ogni direzione trovata eseguo l'algoritmo, quindi lavorando su ogni singolo poligono
-    for(vec3d dir : dirs){
+/**
+ * Qui trasformo la sfera di punti che ho trovato in una semisfera, ho bisogno quindi di una funzione
+ * che prenda la sfera e la trasformi in una semisfera, poi dato un tale valore di rotazione del piano
+ * permetta di far ruotare questi punti per poterli far coincidere con la normale di ogni triangolo
+ */
 
 
-    }
+
+
+/**
+ * Qui per ogni triangolo della mesh faccio scorrere e mando un raggio dal centro del triangolo
+ * verso tutti i punti della semisfera che ho.
+ */
+
+
+
+/**
+ * Qui per ogni raggio sparato controllo le collisioni con i triangoli, in base al fatto che trovo 
+ * una collisione o no salvo in un buffer il punteggio di occlusione ambientale che devo applicare al triangolo.
+ * 
+ * Sommo tutti i valori ottenuti da tutti i raggi ottenendo così il punteggio finale.
+ */
+
+
+
+
+/**
+ * Qui dopo aver ottenuto il punteggio di ogni triangolo della mesh applico tramite le adeguate funzioni di openGL 
+ * l'oc ad ogni triangolo.
+ */
+
 
 }
 }
