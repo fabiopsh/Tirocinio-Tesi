@@ -6,6 +6,7 @@
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/meshes/meshes.h"
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/parallel_for.h"
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/gl/offline_gl_context.h"
+#include <math.h>
 
 /**
  * L'obiettivo di questo algoritmo è poter calcolare l'ambient occlusion a partire da al singolo 
@@ -17,8 +18,6 @@
  * coincidente con la norma dalla quale proviene della luce e quindi sarà necessario
  * memorizzare per ogni triangolo del raycast in quelle direzioni.
  * 
- * Per la semisfera invece basterà crearne una sola e farla ruotare per farla coincidere con il poligono
- * nella direzione giusta, in modo da non dover creare tante semisfere quanti sono i poligoni.
  * 
  */
 
@@ -64,6 +63,21 @@ void ambient_occlusion_psh(      Mesh & m,
      * che prenda la sfera e un piano e restituisca in una semisfera di punti che 
      * poi di fatto è un vettore di direzioni che mi serviranno per ogni triangolo
      */
+
+    //α = arccos[(xa * xb + ya * yb + za * zb) / (√(xa2 + ya2 + za2) * √(xb2 + yb2 + zb2))]
+
+    for (int id = 0; id < m.num_polys(); id++){
+       vec3d normalOfPoly = m.poly_data(id).normal;
+       std::vector<vec3d> dirsOfPolys;
+       for (vec3d dir : dirs){
+            //Calcolo l'angolo tra i due vettori, la norma del poligono e la dir
+            int alpha = acos((normalOfPoly.x() * dir.x() + normalOfPoly.y() * dir.y() + normalOfPoly.z() * dir.z())/(sqrt(pow(normalOfPoly.x(),2) + pow(normalOfPoly.y(),2) + pow(normalOfPoly.z(),2)) * sqrt(pow(dir.x(),2) + pow(dir.y(),2) + pow(dir.z(),2))));
+            //Se l'angolo è acuto allora la metto nel mio array con i vettori giusti, altrimenti skip
+            if (alpha <= 90){
+                dirsOfPolys.push_back(dir);
+            }
+       }
+    }
 
 
 

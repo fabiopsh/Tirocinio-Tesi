@@ -13,8 +13,6 @@ CINO_INLINE
 void ambient_occlusion_psh(      Mesh & m,
                                   const int    buffer_size = 256,
                                   const uint   sample_dirs = 32);
-
-
 }
 
 #ifndef  CINO_STATIC_LIB
