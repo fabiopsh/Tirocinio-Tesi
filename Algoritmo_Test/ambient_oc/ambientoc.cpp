@@ -7,6 +7,7 @@
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/parallel_for.h"
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/gl/offline_gl_context.h"
 #include <math.h>
+#include <stdio.h>
 
 /**
  * L'obiettivo di questo algoritmo è poter calcolare l'ambient occlusion a partire da al singolo 
@@ -64,6 +65,8 @@ void ambient_occlusion_psh(      Mesh & m,
      * poi di fatto è un vettore di direzioni che mi serviranno per ogni triangolo
      */
 
+
+
     //α = arccos[(xa * xb + ya * yb + za * zb) / (√(xa2 + ya2 + za2) * √(xb2 + yb2 + zb2))]
 
     for (int id = 0; id < m.num_polys(); id++){
@@ -71,10 +74,21 @@ void ambient_occlusion_psh(      Mesh & m,
        std::vector<vec3d> dirsOfPolys;
        for (vec3d dir : dirs){
             //Calcolo l'angolo tra i due vettori, la norma del poligono e la dir
-            int alpha = acos((normalOfPoly.x() * dir.x() + normalOfPoly.y() * dir.y() + normalOfPoly.z() * dir.z())/(sqrt(pow(normalOfPoly.x(),2) + pow(normalOfPoly.y(),2) + pow(normalOfPoly.z(),2)) * sqrt(pow(dir.x(),2) + pow(dir.y(),2) + pow(dir.z(),2))));
+            float alpha = acos((normalOfPoly.x() * dir.x() + normalOfPoly.y() * dir.y() + normalOfPoly.z() * dir.z())/(sqrt(pow(normalOfPoly.x(),2) + pow(normalOfPoly.y(),2) + pow(normalOfPoly.z(),2)) * sqrt(pow(dir.x(),2) + pow(dir.y(),2) + pow(dir.z(),2))));
+            //Trasformo da radianti a gradi
+            alpha = alpha * (180.0/3.141592653589793238463);
             //Se l'angolo è acuto allora la metto nel mio array con i vettori giusti, altrimenti skip
             if (alpha <= 90){
                 dirsOfPolys.push_back(dir);
+
+                printf("Valore angolo di poly %d \n", id);
+                printf("%f \n",alpha);
+            }
+       }
+       //Adesso per ogni direzione devo tracciare una linea dal centro del poly e vedere se ha collisione
+       for (vec3d dir : dirsOfPolys){
+            if(!m.poly_data(id).flags[HIDDEN]){
+                    
             }
        }
     }
@@ -103,6 +117,7 @@ void ambient_occlusion_psh(      Mesh & m,
      * Qui dopo aver ottenuto il punteggio di ogni triangolo della mesh applico tramite le adeguate funzioni di openGL 
      * l'oc ad ogni triangolo.
      */
+    /*
     auto min_max = std::minmax_element(ao.begin(), ao.end());   //Coppia di range di AO
     auto min     = *min_max.first;
     auto max     = *min_max.second;
@@ -111,8 +126,8 @@ void ambient_occlusion_psh(      Mesh & m,
     {
         m.poly_data(pid).AO = (m.poly_data(pid).flags[HIDDEN]) ? 1.0 : (ao[pid]-min)/max; //Applico l'AO al poligono
     }
-
-
+    */
+    
 }
 }
 

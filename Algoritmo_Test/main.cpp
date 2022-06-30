@@ -8,7 +8,7 @@ int main()
 {
     using namespace cinolib;
     //Carico la Mesh
-    DrawableTrimesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/triangolo.obj");
+    DrawableQuadmesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/coffee.obj");
     GLcanvas gui;
     //La inserisco nell'interfaccia
     gui.push(&m);

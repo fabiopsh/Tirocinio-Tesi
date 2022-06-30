@@ -127,8 +127,8 @@ imgui/glfw/src/clean: imgui/glfw/src/CMakeFiles/glfw.dir/clean
 # Target rules for target CMakeFiles/cinolib_demo.dir
 
 # All Build rule for target.
-CMakeFiles/cinolib_demo.dir/all: imgui/glfw/src/CMakeFiles/glfw.dir/all
 CMakeFiles/cinolib_demo.dir/all: imgui/CMakeFiles/imgui.dir/all
+CMakeFiles/cinolib_demo.dir/all: imgui/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinolib_demo.dir/build.make CMakeFiles/cinolib_demo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cinolib_demo.dir/build.make CMakeFiles/cinolib_demo.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/build/CMakeFiles --progress-num=1,2 "Built target cinolib_demo"
