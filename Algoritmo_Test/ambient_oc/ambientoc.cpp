@@ -65,25 +65,18 @@ void ambient_occlusion_psh(      Mesh & m,
      * poi di fatto è un vettore di direzioni che mi serviranno per ogni triangolo
      */
 
-
-
-    //α = arccos[(xa * xb + ya * yb + za * zb) / (√(xa2 + ya2 + za2) * √(xb2 + yb2 + zb2))]
-
     for (int id = 0; id < m.num_polys(); id++){
        vec3d normalOfPoly = m.poly_data(id).normal;
        std::vector<vec3d> dirsOfPolys;
        for (vec3d dir : dirs){
+        /*
             //Calcolo l'angolo tra i due vettori, la norma del poligono e la dir
             float alpha = acos((normalOfPoly.x() * dir.x() + normalOfPoly.y() * dir.y() + normalOfPoly.z() * dir.z())/(sqrt(pow(normalOfPoly.x(),2) + pow(normalOfPoly.y(),2) + pow(normalOfPoly.z(),2)) * sqrt(pow(dir.x(),2) + pow(dir.y(),2) + pow(dir.z(),2))));
             //Trasformo da radianti a gradi
             alpha = alpha * (180.0/3.141592653589793238463);
-            //Se l'angolo è acuto allora la metto nel mio array con i vettori giusti, altrimenti skip
-            if (alpha <= 90){
-                dirsOfPolys.push_back(dir);
-
-                printf("Valore angolo di poly %d \n", id);
-                printf("%f \n",alpha);
-            }
+*/
+            //il dot product ci fa rispasmiare computazione e se è >= 0 l'angolo è <= di 90 gradi
+            if (normalOfPoly.dot(dir) >= 0){dirsOfPolys.push_back(dir);}
        }
        //Adesso per ogni direzione devo tracciare una linea dal centro del poly e vedere se ha collisione
        for (vec3d dir : dirsOfPolys){
@@ -130,4 +123,10 @@ void ambient_occlusion_psh(      Mesh & m,
     
 }
 }
-
+/*
+float dot_product(vec3d vector_a, vec3d vector_b) {
+   float product = 0;
+   product = vector_a.x() * vector_b.x() + vector_a.y() * vector_b.y() + vector_a.z() * vector_b.z();
+   return product;
+}
+*/
