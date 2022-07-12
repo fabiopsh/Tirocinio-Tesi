@@ -811,6 +811,16 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/thread \
   ../CINOLIB/include/cinolib/gl/offline_gl_context.h \
   ../CINOLIB/include/cinolib/gl/offline_gl_context.cpp \
+  ../CINOLIB/include/cinolib/drawable_octree.h \
+  ../CINOLIB/include/cinolib/geometry/drawable_aabb.h \
+  ../CINOLIB/include/cinolib/geometry/drawable_aabb.cpp \
+  ../CINOLIB/include/cinolib/octree.h \
+  ../CINOLIB/include/cinolib/octree.cpp \
+  ../CINOLIB/include/cinolib/geometry/point.h \
+  ../CINOLIB/include/cinolib/geometry/point.cpp \
+  ../CINOLIB/include/cinolib/geometry/sphere.h \
+  ../CINOLIB/include/cinolib/geometry/sphere.cpp \
+  ../CINOLIB/include/cinolib/drawable_octree.cpp \
   ../CINOLIB/include/cinolib/gl/glcanvas.h \
   ../CINOLIB/include/cinolib/gl/side_bar_item.h \
   ../CINOLIB/include/cinolib/gl/camera.h \
@@ -1062,6 +1072,20 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
 
 ../CINOLIB/include/cinolib/gl/camera.cpp:
 
+../CINOLIB/include/cinolib/drawable_octree.cpp:
+
+../CINOLIB/include/cinolib/geometry/sphere.cpp:
+
+../CINOLIB/include/cinolib/octree.cpp:
+
+../CINOLIB/include/cinolib/octree.h:
+
+../CINOLIB/include/cinolib/geometry/drawable_aabb.cpp:
+
+../CINOLIB/include/cinolib/geometry/drawable_aabb.h:
+
+../CINOLIB/include/cinolib/drawable_octree.h:
+
 ../CINOLIB/include/cinolib/gl/offline_gl_context.cpp:
 
 ../CINOLIB/include/cinolib/parallel_for.h:
@@ -1229,6 +1253,8 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
 ../CINOLIB/include/cinolib/drawable_segment_soup.h:
 
 ../CINOLIB/include/cinolib/io/read_HYBRID.cpp:
+
+../CINOLIB/include/cinolib/geometry/point.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/random:
 
@@ -1787,6 +1813,8 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
 ../CINOLIB/external/imgui/imgui_impl_glfw.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/is_permutation.h:
+
+../CINOLIB/include/cinolib/geometry/sphere.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/AvailabilityInternal.h:
 
@@ -2683,6 +2711,8 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/transform.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__iterator/insert_iterator.h:
+
+../CINOLIB/include/cinolib/geometry/point.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/inplace_merge.h:
 
