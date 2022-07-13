@@ -28,7 +28,6 @@ void ambient_occlusion_psh(      Mesh & m,
     octree.build_from_mesh_polys(m);
     octree.updateGL();
 
-
     for (int id = 0; id < m.num_polys(); id++){
        vec3d normalOfPoly = m.poly_data(id).normal;
        std::vector<vec3d> dirsOfPolys;
@@ -43,12 +42,9 @@ void ambient_occlusion_psh(      Mesh & m,
        }
         ao[id] = ao[id]/dirsOfPolys.size();
     }
-    for(uint pid=0; pid<m.num_polys(); ++pid)       //Scorro tutti gli ID del poligono e Applico AO
+    for(uint pid=0; pid<m.num_polys(); ++pid)           //Scorro tutti gli ID del poligono e Applico AO
     {
-        if(ao[pid]!=0){
-            m.poly_data(pid).AO = 1 - ao[pid];    //Applico l'AO al poligono se è leggermente nascosto
-            std::cout<<"Valore AO del poly: "<<pid<<" Valore: "<<m.poly_data(pid).AO<<" Valore Collisioni: "<<ao[pid]<<std::endl;
-        }else {m.poly_data(pid).AO = 1;}                //Se è perfettamente visibile   
+        m.poly_data(pid).AO = (ao[pid]!=0) ? 1 - ao[pid] : 1;
     }  
 }
 }
