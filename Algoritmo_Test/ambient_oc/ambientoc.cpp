@@ -16,7 +16,6 @@ namespace cinolib
 template<class Mesh>
 CINO_INLINE
 void ambient_occlusion_psh(      Mesh & m,
-                                  const int    buffer_size,
                                   const uint   sample_dirs)
 {
     std::vector<float> ao(m.num_polys(),0);
@@ -32,7 +31,7 @@ void ambient_occlusion_psh(      Mesh & m,
        vec3d normalOfPoly = m.poly_data(id).normal;
        std::vector<vec3d> dirsOfPolys;
        for (vec3d dir : dirs){
-            if (normalOfPoly.dot(dir) >= 0){dirsOfPolys.push_back(dir);}
+            if (normalOfPoly.dot(dir) > 0){dirsOfPolys.push_back(dir);}
        }
        for (vec3d dir : dirsOfPolys){   //Adesso per ogni direzione devo vedere se ha collisione
                 std::set<std::pair<double,uint>> hits;

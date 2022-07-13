@@ -941,8 +941,16 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
   ../CINOLIB/include/cinolib/gradient.cpp \
   ../CINOLIB/include/cinolib/scalar_field.h \
   ../CINOLIB/include/cinolib/scalar_field.cpp \
-  ../CINOLIB/include/cinolib/ambient_occlusion.h
+  ../CINOLIB/include/cinolib/ambient_occlusion.h \
+  ../CINOLIB/include/cinolib/profiler.h \
+  ../CINOLIB/include/cinolib/tree.h \
+  ../CINOLIB/include/cinolib/tree.cpp \
+  ../CINOLIB/include/cinolib/profiler.cpp
 
+
+../CINOLIB/include/cinolib/tree.h:
+
+../CINOLIB/include/cinolib/profiler.h:
 
 ../CINOLIB/include/cinolib/ambient_occlusion.h:
 
@@ -1896,6 +1904,8 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/copy_if.h:
 
+../CINOLIB/include/cinolib/profiler.cpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__algorithm/unwrap_iter.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h:
@@ -2345,6 +2355,8 @@ CMakeFiles/cinolib_demo.dir/main.cpp.o: ../main.cpp \
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/mach/arm/_structs.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/cstring:
+
+../CINOLIB/include/cinolib/tree.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/sys/_types/_wchar_t.h:
 
