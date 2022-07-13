@@ -3,20 +3,24 @@
 #include "CINOLIB/include/cinolib/gl/glcanvas.h"
 #include "CINOLIB/include/cinolib/meshes/meshes.h"
 #include "CINOLIB/include/cinolib/gl/surface_mesh_controls.h"
-//#include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/ambient_occlusion.h"
+#include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/ambient_occlusion.h"
 
 int main()
 {
     using namespace cinolib;
     //Carico la Mesh
-    DrawableTrimesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/bunny.obj");
-    //DrawableQuadmesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/coffee.obj");
+    //DrawableTrimesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/protein.obj");
+    //DrawableTrimesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/bunny.obj");
+    DrawableQuadmesh<> m("/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/mesh/bamboo_pen.obj");
     GLcanvas gui;
     //La inserisco nell'interfaccia
+    //SurfaceMeshControls<DrawableTrimesh<>> menu(&m, &gui);
+    SurfaceMeshControls<DrawableQuadmesh<>> menu(&m, &gui);
     gui.push(&m);
+    gui.push(&menu);
     //Applico l'algoritmo di ambient occlusion
-    //ambient_occlusion_psh(m);
     ambient_occlusion_psh(m);
+    //ambient_occlusion_srf_meshes(m);
     //Aggiorno la mesh
     m.updateGL();
 
