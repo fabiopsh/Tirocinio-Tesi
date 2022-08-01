@@ -7,6 +7,7 @@
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/parallel_for.h"
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/gl/offline_gl_context.h"
 #include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/drawable_octree.h"
+#include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/parallel_for.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -26,8 +27,8 @@ void ambient_occlusion_psh(      Mesh & m,
     octree.debug_mode(false); // dump times and statistics
     octree.build_from_mesh_polys(m);
     octree.updateGL();
-
-    for (int id = 0; id < m.num_polys(); id++){
+    PARALLEL_FOR(0, m.num_polys(), 1000, [&](const uint id){
+    //for (int id = 0; id < m.num_polys(); id++){
        vec3d normalOfPoly = m.poly_data(id).normal;
        std::vector<vec3d> dirsOfPolys;
        for (vec3d dir : dirs){
@@ -40,7 +41,8 @@ void ambient_occlusion_psh(      Mesh & m,
                     {ao[id] += (hits.size()>1) ? 1 : 0;}
        }
         ao[id] = ao[id]/dirsOfPolys.size();
-    }
+    });
+
     for(uint pid=0; pid<m.num_polys(); ++pid)           //Scorro tutti gli ID del poligono e Applico AO
     {
         m.poly_data(pid).AO = (ao[pid]!=0) ? 1 - ao[pid] : 1;

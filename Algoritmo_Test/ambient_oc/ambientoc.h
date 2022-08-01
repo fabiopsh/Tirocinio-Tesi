@@ -11,7 +11,7 @@ namespace cinolib
 template<class Mesh>
 CINO_INLINE
 void ambient_occlusion_psh(      Mesh & m,
-                                  const uint   sample_dirs = 32);
+                                  const uint   sample_dirs = 100);
 
 }
 

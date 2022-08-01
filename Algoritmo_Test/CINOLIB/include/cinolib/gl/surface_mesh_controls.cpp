@@ -41,6 +41,7 @@
 #include <cinolib/scalar_field.h>
 #include <cinolib/string_utilities.h>
 #include <cinolib/ambient_occlusion.h>
+#include "/Users/fabiopsh/Documents/Universita/Tirocinio/Algoritmo_Test/CINOLIB/include/cinolib/ambient_occlusion.h"
 #include <iostream>
 #include <sstream>
 
@@ -448,7 +449,7 @@ void SurfaceMeshControls<Mesh>::header_ambient_occlusion(const bool open)
     {
         if(ImGui::SmallButton("Update AO"))
         {
-            //ambient_occlusion_srf_meshes(*m);
+            ambient_occlusion_psh(*m);
             m->updateGL();
         }
         if(ImGui::SliderFloat("Alpha",&m->AO_alpha, 0.f, 1.f))
